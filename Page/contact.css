@@ -1,0 +1,115 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #1a1a1a; /* Dark background */
+    color: #f0f0f0; /* Light text */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #2a2a2a; /* Slightly lighter dark for header */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f0f0f0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #f0f0f0;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #8a2be2; /* Purple hover effect */
+}
+
+.profile-icon {
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.menu-toggle {
+    display: none; /* Hidden by default for larger screens */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 25px;
+    background-color: #f0f0f0;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+/* Contact Form Specific Styles */
+.contact-form {
+    background-color: #5C6BC0; /* Blue background for the contact form section */
+    max-width: 600px; /* Matched width from image */
+    padding: 40px; /* Increased padding */
+}
+
+.contact-form h2 {
+    text-align: left; /* Heading aligned to the left */
+    font-size: 2.5em; /* Larger font size for heading */
+    margin-bottom: 30px;
+    color: #fff; /* White heading text */
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Increased gap between form fields */
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea {
+    padding: 15px; /* Larger padding for inputs */
+    border: none; /* No border for inputs */
+    border-radius: 5px;
+    font-size: 1.1em;
+    background-color: #fff; /* White background for input fields */
+    color: #333; /* Dark text in input fields */
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 150px; /* Taller textarea */
+}
+
+.contact-form button[type="submit"] {
+    background-color: white; /* Black submit button */
+    color: black; /* White text on submit button */
+    padding: 15px 30px; /* Larger padding for submit button */
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start; /* Align button to the left */
+    margin-top: 10px; /* Slight margin from last input */
+}
+
+.contact-form button[type="submit"]:hover {
+    background-color: #333;
+}

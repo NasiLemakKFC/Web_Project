@@ -1,0 +1,148 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #1a1a1a; /* Dark background */
+    color: #f0f0f0; /* Light text */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #2a2a2a; /* Slightly lighter dark for header */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f0f0f0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #f0f0f0;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #8a2be2; /* Purple hover effect */
+}
+
+.profile-icon {
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.menu-toggle {
+    display: none; /* Hidden by default for larger screens */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 25px;
+    background-color: #f0f0f0;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+/* Review Section Specific Styles */
+.review {
+    text-align: left; /* Content aligned to the left */
+    max-width: 700px; /* Matched width from image */
+    padding: 40px;
+}
+
+.review h2 {
+    font-size: 2.2em; /* Product Title size */
+    margin-bottom: 25px;
+    text-align: left; /* Aligned to the left */
+    color: #fff;
+}
+
+.review .image-placeholder {
+    width: 250px; /* Specific width for image placeholder */
+    height: 180px; /* Specific height for image placeholder */
+    background-color: #333; /* Darker grey placeholder */
+    border: none; /* No border */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+    margin-bottom: 30px; /* More space below */
+    font-size: 1.2em;
+    border-radius: 5px; /* Slightly rounded corners */
+}
+
+.review p {
+    font-size: 1.5em; /* Larger font size for product quality */
+    margin-bottom: 10px;
+    color: #fff; /* White text */
+}
+
+.review .stars {
+    color: #FFD700; /* Gold color for stars */
+    font-size: 2.5em; /* Larger stars */
+    margin-bottom: 30px;
+    letter-spacing: 5px; /* Spacing between stars */
+}
+
+.review textarea {
+    width: calc(100% - 30px); /* Account for padding */
+    padding: 15px; /* Larger padding for textarea */
+    border: none; /* No border for textarea */
+    border-radius: 5px;
+    min-height: 200px; /* Taller textarea */
+    resize: vertical;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    background-color: #fff; /* White background for textarea */
+    color: #333; /* Dark text in textarea */
+}
+
+.review .btn-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px; /* Spacing between buttons */
+}
+
+.review button {
+    padding: 12px 25px; /* Larger padding for buttons */
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.review .cancel {
+    background-color: #5C6BC0; /* Blue color for cancel */
+    color: #fff; /* White text on cancel */
+}
+
+.review .cancel:hover {
+    background-color: #48589c;
+}
+
+.review .submit {
+    background-color: #5C6BC0; /* Blue color for submit */
+    color: #fff; /* White text on submit */
+}
+
+.review .submit:hover {
+    background-color: #48589c;
+}
