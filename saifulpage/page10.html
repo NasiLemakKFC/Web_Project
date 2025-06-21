@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Post Product</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">UTeMHub</div>
+    <nav>
+      <a href="#">Utama</a>
+      <a href="#">Cari Barang</a>
+      <a href="#">Daftar Perniagaan</a>
+      <a href="#">Hubungi Kami</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="form-card">
+      <h2>Product Information</h2>
+      <form>
+        <div class="form-row">
+          <input type="text" placeholder="Product title">
+          <select>
+            <option value="">Product category</option>
+            <option value="elektronik">Elektronik</option>
+            <option value="pakaian">Pakaian</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <input type="text" placeholder="Tags">
+          <input type="text" placeholder="Price">
+        </div>
+
+        <textarea placeholder="Write something to describe your product."></textarea>
+      </form>
+    </div>
+
+    <div class="form-card">
+      <h3>Media (Images, video or 3D models)</h3>
+      <div class="media-grid">
+        <div class="media-box"><img src="picture/placeholder.png" alt="placeholder"></div>
+        <div class="media-box"><img src="picture/placeholder.png" alt="placeholder"></div>
+        <div class="media-box"><img src="picture/placeholder.png" alt="placeholder"></div>
+        <div class="media-box add-media">+</div>
+      </div>
+    </div>
+
+    <button class="post-btn">Post Product</button>
+  </main>
+</body>
+</html>
