@@ -9,12 +9,25 @@ if (!isset($_SESSION['User_ID'])) {
 
 $user_id = $_SESSION['User_ID'];
 
+$store_id = null;
+$stmt = $conn->prepare("SELECT Store_ID FROM user WHERE User_ID = ?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$stmt->bind_result($store_id);
+$stmt->fetch();
+$stmt->close();
+
+if (!$store_id) {
+    die("No store found for this user.");
+}
+
 // Get and validate form inputs
 $title = trim($_POST['title'] ?? '');
 $category = trim($_POST['category'] ?? '');
 $quantity = trim($_POST['quantity'] ?? '');
 $price = trim($_POST['price'] ?? '');
 $description = trim($_POST['description'] ?? '');
+$category = $_POST['category'];
 
 // Check required fields
 if (empty($title) || empty($category) || empty($quantity) || empty($price) || empty($description)) {
@@ -40,12 +53,12 @@ if (isset($_FILES['media']) && $_FILES['media']['error'] === UPLOAD_ERR_OK) {
 }
 
 // Insert into database
-$stmt = $conn->prepare("INSERT INTO item (Name, Category, Quantity, Price, Description, Picture, User_ID) VALUES (?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("sssssss", $title, $category, $quantity, $price, $description, $imageName, $user_id);
+$stmt = $conn->prepare("INSERT INTO item (Name, Category, Quantity, Price, Description, Store_ID, Picture, User_ID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssidsisi", $title, $category, $quantity, $price, $description, $store_id, $imageName, $user_id);
 
 if ($stmt->execute()) {
     echo "Product posted successfully!";
-    header("refresh:2; url=../Page/index.php");
+    header("refresh:2; url=../Page/page3.php");
 } else {
     echo "Error: " . $stmt->error;
 }

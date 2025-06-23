@@ -10,38 +10,75 @@ body {
   color: #fff;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #181818;
-  padding: 10px 5vw;
-  flex-wrap: wrap;
+/* ========== Navigation Bar ========== */
+.navbar {
+    width: 100%;
+    background-color: #111;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  font-size: 1.2em;
-  font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
 }
 
-.logo i {
-  color: #1976d2;
-  margin-right: 10px;
+.logo-icon {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 0.3rem;
+    border-radius: 0.5rem;
 }
 
-nav {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+/* Main nav menu */
+.nav-menu {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
-nav a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1em;
-  font-weight: bold;
+.nav-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #667eea;
+}
+
+/* Profile Icon */
+.nav-profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile-icon {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.profile-icon:hover,
+.profile-icon.active {
+    transform: scale(1.1);
+    color: #667eea;
 }
 
 .profile-cart {

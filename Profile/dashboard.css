@@ -1,0 +1,213 @@
+/* Dashboard Styles */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .metric-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3498db;
+            margin: 15px 0;
+        }
+        
+        .metric-label {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+        
+        .chart-container {
+            grid-column: span 2;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            margin-top: 25px;
+        }
+        
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .chart-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+        }
+        
+        .chart-filters {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .chart-filter {
+            padding: 8px 15px;
+            background: #f1f2f6;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .chart-filter.active {
+            background: #3498db;
+            color: white;
+        }
+        
+        .chart-content {
+            display: flex;
+            height: 300px;
+            gap: 20px;
+        }
+        
+        .sales-chart {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .chart-bars {
+            display: flex;
+            height: 80%;
+            align-items: flex-end;
+            gap: 15px;
+            padding: 0 20px;
+            border-bottom: 1px solid #eee;
+            border-left: 1px solid #eee;
+        }
+        
+        .chart-bar {
+            flex: 1;
+            background: #3498db;
+            border-radius: 6px 6px 0 0;
+            position: relative;
+            transition: height 0.5s ease;
+        }
+        
+        .bar-label {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .y-axis {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 40px;
+            padding-right: 10px;
+            text-align: right;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .ratings-chart {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        
+        .rating-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+        }
+        
+        .rating-stars {
+            width: 100px;
+            color: #ffc107;
+        }
+        
+        .rating-bar {
+            flex: 1;
+            height: 10px;
+            background: #ecf0f1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .rating-fill {
+            height: 100%;
+            background: #3498db;
+            border-radius: 5px;
+        }
+        
+        .rating-count {
+            width: 40px;
+            text-align: right;
+            color: #7f8c8d;
+        }
+        
+        .months-labels {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 20px 0;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        .chart-flex {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .sales-chart {
+            flex: 2; /* Bar chart takes more space */
+            min-width: 400px;
+        }
+
+        .ratings-chart {
+            flex: 1; /* Pie chart takes less space */
+            max-width: 300px;
+        }       
+        @media (max-width: 900px) {
+            .chart-content {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-container {
+                grid-column: 1;
+            }
+        }

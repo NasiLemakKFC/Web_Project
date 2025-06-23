@@ -1,10 +1,15 @@
 <?php
+session_start();
 require('../inc/connect.php');
 
-$sql = "SELECT Item_ID, Name, Picture, Price FROM item LIMIT 12";
-$result = $conn->query($sql);
+$sql = "SELECT Item_ID, Name, Picture, Price, Item_Sold FROM item ORDER BY Item_Sold DESC LIMIT 12";
+$resultItem = $conn->query($sql);
 
 $sqlCategory = "SELECT * FROM Categories";
+
+$sqluser = "SELECT Affiliate FROM user WHERE User_ID = '$_SESSION[User_ID]'";
+$result = $conn->query($sqluser);
+$user = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -18,24 +23,33 @@ $sqlCategory = "SELECT * FROM Categories";
 </head>
 
 <body>
-  <header class="navbar">
-    <div class="logo">UTeMHub</div>
-    <nav>
-      <a href="../Page/page3.php">Home Page</a>
-      <a href="../Page/page4.php">Search Item</a>
-      <a href="../product/store_register.php">Apply as Seller</a>
-      <a href="../Page/contact.php">Contact Us</a>
-    </nav>
-      <div class="profile-cart">
-        <a href="../auth/logout.php"><i class="fa-regular fa-user"></i></a>
-      </div>
-
-  </header>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <span class="logo-icon">📱</span>
+            <span class="logo-text">UTeMHub</span>
+        </div>
+        <div class="nav-menu">
+            <a href="../Page/page3.php">Home Page</a>
+            <a href="../Page/page4.php">Search Item</a>
+            <?php
+            if ($user['Affiliate'] == "Buyer") {
+                echo '<a href="../product/store_register.php">Apply as Seller</a>';
+            } else {
+                echo '<a href="../product/page10.php">Add Product</a>';
+            }
+            ?>
+            <a href="../Page/contact.php">Contact Us</a>
+        </div>
+        <div class="nav-profile">
+            <a href="../profile/account.php" class="profile-icon active">👤</a>
+        </div>
+    </div>
+</nav>
 
   <section class="hero">
     <h1>Welcome To UtemHub !</h1>
     <p>Build Marketing & Networking Online</p>
-    <a href="register.php"><button>Daftar Perniagaan</button></a>
   </section>
 
   <section class="categories">
@@ -53,17 +67,17 @@ $sqlCategory = "SELECT * FROM Categories";
     </div>
   </section>
 
-
   <section class="top-products">
     <h2>Top Products</h2>
     <div class="product-grid">
-      <?php if ($result->num_rows > 0): ?>
-        <?php while($row = $result->fetch_assoc()): ?>
+      <?php if ($resultItem->num_rows > 0): ?>
+        <?php while($row = $resultItem->fetch_assoc()): ?>
           <div class="product-item">
             <a href="page5.php?id=<?php echo $row['Item_ID']; ?>">
               <img src="../product/uploads/<?php echo htmlspecialchars($row['Picture']); ?>" alt="Product Image" class="image-box">
             </a>
             <p><?php echo htmlspecialchars($row['Name']); ?></p>
+            <p>Sold: <?php echo intval($row['Item_Sold']); ?></p>
           </div>
         <?php endwhile; ?>
       <?php else: ?>
