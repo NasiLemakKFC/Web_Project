@@ -7,44 +7,73 @@ body {
   font-size: 1em;
 }
 
-header {
+.navbar {
+  width: 100%;
+  background-color: #111;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #181818;
-  padding: 10px 5vw;
   flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  font-size: 1.2em;
+  gap: 0.5rem;
+  font-size: 1.5rem;
   font-weight: bold;
+  color: #fff;
 }
 
-.logo i {
-  color: #1976d2;
-  margin-right: 10px;
+.logo-icon {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 0.3rem;
+  border-radius: 0.5rem;
 }
-
-nav {
+/* Main nav menu */
+.nav-menu {
   display: flex;
-  gap: 20px;
+  gap: 1.5rem;
   flex-wrap: wrap;
 }
 
-nav a {
+.nav-menu a {
   color: #fff;
   text-decoration: none;
   font-size: 1em;
   font-weight: bold;
+  transition: color 0.3s ease;
 }
 
-.profile-cart {
-  font-size: 1.3em;
-  color: white;
+.nav-menu a:hover {
+  color: #667eea;
 }
+.nav-profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile-icon {
+  color: #fff;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.profile-icon:hover,
+.profile-icon.active {
+  transform: scale(1.1);
+  color: #667eea;
+}
+
 .product-container {
   padding: 5vw;
   max-width: 1400px;
@@ -88,17 +117,6 @@ nav a {
   border-radius: 12px;
 }
 
-.share-btn button {
-  padding: 8px 16px;
-  background: #1976d2;
-  border: none;
-  color: white;
-  font-size: 1em;
-  border-radius: 9px;
-  cursor: pointer;
-  margin-top: 15px;
-}
-
 .product-details {
   flex: 1 1 300px;
 }
@@ -112,20 +130,6 @@ nav a {
   color: gold;
   font-size: 1.1em;
   margin-bottom: 15px;
-}
-
-.variation-btns button,
-.quantity button,
-.action-btns button,
-.rating-filter button {
-  margin: 6px 9px 6px 0;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 9px;
-  background: #6161ee;
-  color: white;
-  font-size: 1em;
-  cursor: pointer;
 }
 
 .quantity {
@@ -146,10 +150,41 @@ nav a {
   font-size: 1em;
 }
 
+/* 🔵 Unified button style */
+button,
+.variation-btns button,
+.action-btns button,
+.rating-filter button,
+.shop-details button,
+.share-btn button,
+.chat-seller,
+.buy-now {
+  margin: 6px 9px 6px 0;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 9px;
+  background: #6161ee;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+button:hover,
+.action-btns button:hover,
+.rating-filter button:hover,
+.shop-details button:hover,
+.chat-seller:hover {
+  background: #4848d4;
+}
+
 .action-btns {
   margin-top: 20px;
 }
 
+/* 🛍️ Seller info */
 .seller-info {
   display: flex;
   flex-wrap: wrap;
@@ -164,25 +199,18 @@ nav a {
   border-radius: 50%;
 }
 
-.shop-details p,
-.shop-details button {
+.shop-details p {
   margin: 8px 0;
   font-size: 1em;
 }
 
-.shop-details button {
-  padding: 7px 15px;
-  background: #6161ee;
-  border: none;
-  border-radius: 9px;
-  color: white;
-}
-
+/* 📄 Description */
 .description ul {
   padding-left: 25px;
   font-size: 1em;
 }
 
+/* ⭐ Ratings */
 .ratings h3 {
   margin-top: 0;
   font-size: 1.3em;
@@ -208,6 +236,7 @@ nav a {
   text-align: center;
   border: 1px solid #ddd;
   font-size: 1em;
+  color: #000;
 }
 
 .user-pic {
@@ -218,7 +247,7 @@ nav a {
   margin: auto auto 12px;
 }
 
-/* ✅ Responsive layout for small devices */
+/* 🔄 Responsive */
 @media (max-width: 768px) {
   header {
     flex-direction: column;

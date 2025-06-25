@@ -1,8 +1,11 @@
 <?php
-    session_start();
-    if (isset($_SESSION["username"])) {
-        $_SESSION = array();
-        session_destroy();
-        echo "<meta http-equiv=\"refresh\" content=\"2;URL=login.html\">";
-    }
+session_start();
+
+// Destroy session for any user type
+$_SESSION = array();
+session_destroy();
+
+// Show logout message
+echo "You have been logged out.";
+echo "<meta http-equiv=\"refresh\" content=\"2;URL=../auth/login.html\">";
 ?>

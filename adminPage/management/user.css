@@ -1,0 +1,127 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+td{
+    color: black;
+    font-weight: 500;
+}
+th {
+    background-color: #3498db;
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 0.5px;
+}
+
+tr:hover {
+    background-color: #b8dafd;
+}
+
+.status-active {
+    color: #27ae60;
+    font-weight: 500;
+}
+
+.status-inactive {
+    color: #7b4211;
+    font-weight: 500;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: all 0.2s;
+}
+
+.btn-edit {
+    background-color: #209ce4;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #22a1e6;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+.btn-activate {
+    background-color: #099a15;
+    color: white;
+}
+
+.btn-activate:hover {
+    background-color: #177950;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-input {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 300px;
+    font-size: 1em;
+}
+
+.add-user-btn {
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.add-user-btn:hover {
+    background-color: #27ae60;
+}

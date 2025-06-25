@@ -21,15 +21,36 @@ $checkStmt->store_result();
 
 if ($checkStmt->num_rows > 0) {
     echo "Username already exists. Please choose another.";
-    header("refresh:3; url=set_credentials.php"); // Adjust this link to your form
+    header("refresh:3; url=set_credentials.php");
     exit();
+}
+
+// Handle profile picture upload
+$targetDir = "../profile/uploads/";
+$defaultImage = "accountdefault.png";
+$pictureName = $defaultImage;
+$userStatus = "Active";
+
+if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK) {
+    $tmpName = $_FILES['profile_picture']['tmp_name'];
+    $originalName = basename($_FILES['profile_picture']['name']);
+    $extension = pathinfo($originalName, PATHINFO_EXTENSION);
+    $newName = uniqid("profile_", true) . "." . $extension;
+
+    // Only allow jpg, jpeg, png
+    $allowed = ['jpg', 'jpeg', 'png'];
+    if (in_array(strtolower($extension), $allowed)) {
+        if (move_uploaded_file($tmpName, $targetDir . $newName)) {
+            $pictureName = $newName;
+        }
+    }
 }
 
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-// Insert new user
-$stmt = $conn->prepare("INSERT INTO user (Name, Password, Role, IC_Number, Affiliate) VALUES (?, ?, ?, ?, ?)");
-$stmt->bind_param("sssss", $username, $hashedPassword, $UserRole, $IC_Number, $Affiliated);
+// Insert new user with profile picture
+$stmt = $conn->prepare("INSERT INTO user (Name, Password, Role, IC_Number, Affiliate, Picture, Status) VALUES (?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("sssssss", $username, $hashedPassword, $UserRole, $IC_Number, $Affiliated, $pictureName, $userStatus);
 
 if ($stmt->execute()) {
     session_destroy();

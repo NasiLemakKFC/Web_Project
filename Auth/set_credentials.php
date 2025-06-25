@@ -17,7 +17,7 @@ if (!isset($_SESSION['id_Number']) || !isset($_SESSION['IC_Number'])) {
 <body>
     <div class="container">
         <h2>Set Your Username & Password</h2>
-        <form action="save_credentials.php" method="POST">
+        <form action="save_credentials.php" method="POST" enctype="multipart/form-data">
             <div class="input-box">
                 <input type="text" name="username" placeholder="Username" required>
                 <i class='bx bxs-user'></i>
@@ -29,6 +29,10 @@ if (!isset($_SESSION['id_Number']) || !isset($_SESSION['IC_Number'])) {
             <div class="show-password">
                 <input type="checkbox" id="showPassword" style="margin-right: 8px;">
                 <label for="showPassword">Show Password</label>
+            </div>
+            <div class="input-box">
+                <input type="file" name="picture" id="picture" accept="image/*">
+                <i class='bx bx-image'></i>
             </div>
             <button type="submit" class="btn">Save</button>
         </form>
@@ -54,3 +58,4 @@ if (!isset($_SESSION['id_Number']) || !isset($_SESSION['IC_Number'])) {
     </script>
 </body>
 </html>
+

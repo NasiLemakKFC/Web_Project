@@ -1,3 +1,20 @@
+<?php
+session_start();
+require('../inc/connect.php');
+
+// Get category list from database
+$catSql = "SELECT * FROM categories";
+$catResult = $conn->query($catSql);
+$categoryOptions = [];
+while ($row = $catResult->fetch_assoc()) {
+    $categoryOptions[] = $row['Category'];
+}
+
+$sqluser = "SELECT Affiliate FROM user WHERE User_ID = '$_SESSION[User_ID]'";
+$result = $conn->query($sqluser);
+$user = $result->fetch_assoc();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,22 +22,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Post Product</title>
   <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">UTeMHub</div>
-    <nav>
-      <a href="../Page/page3.php">Utama</a>
-      <a href="../Page/page4.php">Cari Barang</a>
-      <a href="../product/page10.html">Daftar Perniagaan</a>
-      <a href="../Page/contact.php">Hubungi Kami</a>
-    </nav>
-      <div class="profile-cart">
-        <a href="../auth/logout.php"><i class="fa-regular fa-user"></i></a>
-      </div>
-
-  </header>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <span class="logo-icon">📱</span>
+            <span class="logo-text">UTeMHub</span>
+        </div>
+        <div class="nav-menu">
+            <a href="../Page/page3.php">Home Page</a>
+            <a href="../Page/page4.php">Search Item</a>
+            <?php
+            if ($user['Affiliate'] == "Buyer") {
+                echo '<a href="../product/store_register.php">Apply as Seller</a>';
+            } else {
+                echo '<a href="../product/page10.php">Add Product</a>';
+            }
+            ?>
+            <a href="../Page/contact.php">Contact Us</a>
+        </div>
+        <div class="nav-profile">
+            <a href="../profile/account.php" class="profile-icon active">👤</a>
+        </div>
+    </div>
+</nav>
 
 <main>
   <div class="form-card">
@@ -29,10 +56,15 @@
       <div class="form-row">
         <input type="text" name="title" placeholder="Product title" required>
         <select name="category" required>
-          <option value="">Product category</option>
-          <option value="elektronik">Elektronik</option>
-          <option value="pakaian">Pakaian</option>
+          <option value="" disabled selected>Select a category</option>
+          <?php
+          $catResult = $conn->query("SELECT Category_ID, Category FROM Categories");
+          while ($cat = $catResult->fetch_assoc()) {
+              echo '<option value="' . $cat['Category_ID'] . '">' . htmlspecialchars($cat['Category']) . '</option>';
+          }
+          ?>
         </select>
+
       </div>
 
       <div class="form-row">
@@ -42,7 +74,6 @@
 
       <textarea name="description" placeholder="Write something to describe your product." required></textarea>
 
-      <!-- Hidden file input -->
       <input type="file" name="media" id="mediaInput" accept="image/*" style="display: none">
 
       <h3>Media (Images)</h3>
@@ -61,7 +92,7 @@ const mediaInput = document.getElementById('mediaInput');
 const mediaGrid = document.getElementById('mediaGrid');
 
 addMediaBtn.addEventListener('click', () => {
-  mediaInput.click(); // trigger file input
+  mediaInput.click();
 });
 
 mediaInput.addEventListener('change', () => {
@@ -69,7 +100,6 @@ mediaInput.addEventListener('change', () => {
   if (file) {
     const reader = new FileReader();
     reader.onload = function (e) {
-      // Remove old image (except + button)
       const existingImages = mediaGrid.querySelectorAll('.media-box:not(.add-media)');
       existingImages.forEach(img => img.remove());
 

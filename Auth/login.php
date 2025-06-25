@@ -18,17 +18,27 @@ $result = $stmt->get_result();
 if ($result->num_rows === 1) {
     $row = $result->fetch_assoc();
 
-    if (password_verify($password, $row['Password'])) {
-        // Store both username and User_ID in session
+    if ($row['Status'] !== 'Active') {
+        echo "Your account is deactivated.";
+        header("refresh:3; url=login.html");
+        exit;
+    }
+
+    if (password_verify($password, $row['Password']) && $row['Role'] === 'User') {
         $_SESSION['username'] = $username;
-        $_SESSION['User_ID'] = $row['User_ID']; 
+        $_SESSION['User_ID'] = $row['User_ID'];
 
         echo "Login successful. Redirecting...";
         header("refresh:2; url=../Page/page3.php");
-    } else {
-        echo "Incorrect password.";
+        exit;
+    } else if (password_verify($password, $row['Password']) && $row['Role'] === 'Admin') {
+        echo "Login successful. Redirecting...";
+        header("refresh:2; url=../adminPage/dashboard.php");
+        exit;
     }
 } else {
     echo "User not found.";
+    header("refresh:2; url=login.html");
+    exit;
 }
 ?>

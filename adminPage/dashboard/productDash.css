@@ -1,0 +1,86 @@
+/* Chart Container Styling */
+.chart-section {
+    max-width: 1000px;
+    margin: 40px auto;
+    background: #1c1c1c;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    color: #fff;
+  }
+  
+  /* Chart Title */
+  .chart-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #667eea;
+  }
+  
+  /* Canvas Box */
+  canvas#salesChart {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  .charts-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 2rem;
+    justify-content: center;
+}
+
+.chart-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.chart-box h2 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+.metric-card.top-store-card {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  color: #333;
+  width: 100%;
+  max-width: 400px;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.metric-card.top-store-card h3 {
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .chart-section {
+      padding: 1.5rem;
+    }
+  
+    .chart-section h2 {
+      font-size: 1.5rem;
+    }
+  
+    canvas#salesChart {
+      padding: 15px;
+    }
+  }
