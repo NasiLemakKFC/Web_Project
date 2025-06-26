@@ -6,7 +6,8 @@ $username = $_POST['username'] ?? '';
 $password = $_POST['password'] ?? '';
 
 if (empty($username) || empty($password)) {
-    die("Username and password are required.");
+    echo "<script>alert('Username and password are required.'); window.location.href='login.html';</script>";
+    exit;
 }
 
 // Get user record
@@ -19,8 +20,7 @@ if ($result->num_rows === 1) {
     $row = $result->fetch_assoc();
 
     if ($row['Status'] !== 'Active') {
-        echo "Your account is deactivated.";
-        header("refresh:3; url=login.html");
+        echo "<script>alert('Your account is deactivated.'); window.location.href='login.html';</script>";
         exit;
     }
 
@@ -28,17 +28,15 @@ if ($result->num_rows === 1) {
         $_SESSION['username'] = $username;
         $_SESSION['User_ID'] = $row['User_ID'];
 
-        echo "Login successful. Redirecting...";
-        header("refresh:2; url=../Page/page3.php");
+        echo "<script>alert('Login successful.'); window.location.href='../Page/page3.php';</script>";
         exit;
     } else if (password_verify($password, $row['Password']) && $row['Role'] === 'Admin') {
-        echo "Login successful. Redirecting...";
-        header("refresh:2; url=../adminPage/dashboard.php");
+        echo "<script>alert('Login successful.'); window.location.href='../adminPage/dashboard.php';</script>";
         exit;
     }
 } else {
-    echo "User not found.";
-    header("refresh:2; url=login.html");
+    echo "<script>alert('User not found.'); window.location.href='login.html';</script>";
     exit;
 }
 ?>
+

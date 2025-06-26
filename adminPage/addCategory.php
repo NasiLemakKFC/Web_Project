@@ -73,9 +73,10 @@ $categories = $conn->query("SELECT * FROM Categories ORDER BY Category_ID ASC");
       <a href="../addCategory.php">Add Categories</a>
       <a href="dashboard/productdash.php">Product Dashboard</a>
       <a href="../adminpage/management/itemManage.php">Product Management</a>
+      <a href="contact_replied.php">Message List</a>
     </div>
     <div class="nav-profile">
-            
+    <button type="button" class="save-btn" onclick="window.location.href='../auth/logout.php'">Log Out</button>
     </div>
   </div>
 </nav>

@@ -3,7 +3,7 @@ session_start();
 require('../inc/connect.php');
 
 if (!isset($_SESSION['id_Number'], $_SESSION['IC_Number'])) {
-    echo "Session expired.";
+    echo "<script>alert('Session expired.'); window.location.href='login.html';</script>";
     exit();
 }
 
@@ -20,8 +20,7 @@ $checkStmt->execute();
 $checkStmt->store_result();
 
 if ($checkStmt->num_rows > 0) {
-    echo "Username already exists. Please choose another.";
-    header("refresh:3; url=set_credentials.php");
+    echo "<script>alert('Username already exists. Please choose another.'); window.location.href='set_credentials.php';</script>";
     exit();
 }
 
@@ -54,9 +53,8 @@ $stmt->bind_param("sssssss", $username, $hashedPassword, $UserRole, $IC_Number, 
 
 if ($stmt->execute()) {
     session_destroy();
-    echo "Account created. Redirecting to login...";
-    header("refresh:2; url=login.html");
+    echo "<script>alert('Account created. Redirecting to login...'); window.location.href='login.html';</script>";
 } else {
-    echo "Error saving credentials. Please try again.";
+    echo "<script>alert('Error saving credentials. Please try again.'); window.location.href='set_credentials.php';</script>";
 }
-?>
+

@@ -2,9 +2,9 @@
 require('../../inc/connect.php'); 
 
 $search = $_GET['search'] ?? '';
-$sql = "SELECT * FROM user";
+$sql = "SELECT * FROM user WHERE Role = 'user'";
 if (!empty($search)) {
-    $sql .= " WHERE Name LIKE ?";
+    $sql .= " AND Name LIKE ?";
 }
 $sql .= " ORDER BY User_ID ASC";
 
@@ -42,9 +42,10 @@ $count = 1;
       <a href="../addCategory.php">Add Categories</a>
       <a href="../dashboard/productdash.php">Product Dashboard</a>
       <a href="itemManage.php">Product Management</a>
+      <a href="../contact_replied.php">Message List</a>
     </div>
     <div class="nav-profile">
-            
+    <button type="button" class="save-btn" onclick="window.location.href='../../auth/logout.php'">Log Out</button>
     </div>
   </div>
 </nav>

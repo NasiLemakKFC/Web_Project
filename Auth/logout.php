@@ -5,7 +5,10 @@ session_start();
 $_SESSION = array();
 session_destroy();
 
-// Show logout message
-echo "You have been logged out.";
-echo "<meta http-equiv=\"refresh\" content=\"2;URL=../auth/login.html\">";
+// Show logout message and redirect
+echo "<script>
+    alert('You have been logged out.');
+    window.location.href='../auth/login.html';
+</script>";
 ?>
+
